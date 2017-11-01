@@ -10,9 +10,9 @@ public class Calculator {
      */
     public static void main(String[] args) {
         
-        int arg1 = 5;
+        int arg1 = 50;
         int arg2 = 10;
-        Operator op = Operator.TIMES;
+        Operator op = Operator.PLUS;
         
         double result; 
         switch (op.getOperand()){
