@@ -19,6 +19,8 @@ package calculator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -65,6 +67,9 @@ public class CalculatorGUI {
         //Loop through and add all of the numberical buttons 
         for (int i = 0; i < 10; i++){
             JButton currentNumberButton = new JButton(Integer.toString(i));
+            char digitAsChar = Integer.toString(i).charAt(0);
+            ButtonClick clickable = new ButtonClick(digitAsChar);
+            currentNumberButton.addActionListener(clickable);
             buttonsPanel.add(currentNumberButton);
         }
         
@@ -72,7 +77,41 @@ public class CalculatorGUI {
         for (Operator op : Operator.values()){
             String opString = Character.toString(op.getOperand());
             JButton operantionButton = new JButton(opString);
+            ButtonClick clickable = new ButtonClick(op.getOperand());
+            operantionButton.addActionListener(clickable);
             buttonsPanel.add(operantionButton);
+        }
+    }
+    
+    /**
+     * A class that implements the action listener interface. When the JButtons 
+     * have been clicked, the listener will trigger. 
+     */
+    private class ButtonClick implements ActionListener{
+        
+        /**
+         * The digit that is associated with the button
+        */
+        private char digit;
+        
+        /**
+         * 
+         * 
+         * @param digit 
+         */
+        public ButtonClick(char digit){
+            this.digit = digit;
+        }
+
+        /**
+         * 
+         * 
+         * @param ae The Action Event that has been triggered. 
+         */
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            System.out.println(ae.getActionCommand());
+            System.out.println("You've clicked the " + digit + " button!");
         }
     }
 }

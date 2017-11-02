@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Scott Lockett
+ * Copyright (C) 2017 Lenovo T450
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,39 +17,40 @@
 package calculator;
 
 /**
+ * An interface used to define mathematical operation
  *
- * An enum representing the mathematical operands  
- * 
  * @author Scott Lockett
  */
-public enum Operator {
-    DIVIDE('/'),
-    PLUS('+'),
-    MINUS('-'),  
-    TIMES('*'),
-    EQUALS('=');
+public interface MathematicalOperation {
     
     /**
-     * The operand type 
-     */
-    private final char operand;
-
-    /**
-     * Constructor to create an operand object 
+     * Defines the addition of a series of numbers. 
      * 
-     * @param operand The operand to be used
+     * @param parameters 
+     * @return 
      */
-    private Operator(char operand) {
-        this.operand = operand;
-    }
+    public double addition(double... parameters);
     
     /**
-     * Getter method to return the operand as a char
+     * Defines the subtraction of a series of numbers. 
      * 
-     * @return The chosen operand as a char
+     * @param parameters
+     * @return 
      */
-    public char getOperand(){
-        return operand;
-    }
-
+    public double subtraction(double... parameters);
+    
+    /**
+     * 
+     * 
+     * @param parameters
+     * @return 
+     */
+    public double multipulication(double... parameters);
+    
+    /**
+     * 
+     * @param parameters
+     * @return 
+     */
+    public double division(double... parameters);
 }
