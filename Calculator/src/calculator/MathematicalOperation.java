@@ -40,14 +40,15 @@ public interface MathematicalOperation {
     public double subtraction(double... parameters);
     
     /**
+     * Define the multiplication of a series of numbers 
      * 
-     * 
-     * @param parameters
+     * @param parameters 
      * @return 
      */
-    public double multipulication(double... parameters);
+    public double multiplication(double... parameters);
     
     /**
+     * Divide a couple of numbers 
      * 
      * @param parameters
      * @return 

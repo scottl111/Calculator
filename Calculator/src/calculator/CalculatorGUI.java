@@ -21,6 +21,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,6 +47,11 @@ public class CalculatorGUI {
      * The JPanel on which the result of the operations will be displayed.
      */
     private final JPanel resultPanel = new JPanel();
+    
+    /**
+     * An arraylist for the operations
+     */
+    private final ArrayList<Character> listOfOperations = new ArrayList();
     
     /**
      * Sets up the calculator's graphical user interface
@@ -110,8 +116,57 @@ public class CalculatorGUI {
          */
         @Override
         public void actionPerformed(ActionEvent ae) {
-            System.out.println(ae.getActionCommand());
-            System.out.println("You've clicked the " + digit + " button!");
+            if (Operator.EQUALS.getOperand() == (ae.getActionCommand().charAt(0))){
+                if (listOfOperations.size() < 3){
+                     throw new ArithmeticException();
+                }
+            } else {
+                listOfOperations.add(ae.getActionCommand().charAt(0));
+            }
+        }
+    }
+    
+    
+    private class MathsOperator implements MathematicalOperation{
+
+        @Override
+        public double addition(double... parameters) {
+            if (parameters.length == 2){
+                return parameters[0] + parameters[1];
+            }
+            else {
+                return 0;
+            }
+        }
+
+        @Override
+        public double subtraction(double... parameters) {
+            if (parameters.length == 2){
+                return parameters[0] - parameters[1];
+            }
+            else {
+                return 0;
+            }
+        }
+
+        @Override
+        public double multiplication(double... parameters) {
+            if (parameters.length == 2){
+                return parameters[0] * parameters[1];
+            }
+            else {
+                return 0;
+            }
+        }
+
+        @Override
+        public double division(double... parameters) {
+            if (parameters.length == 2){
+                return parameters[0] / parameters[1];
+            }
+            else {
+                return 0;
+            }
         }
     }
 }
